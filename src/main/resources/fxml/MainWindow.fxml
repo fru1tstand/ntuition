@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="329.0" prefWidth="800.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.fru1t.ntuition.controller.MainController">
+   <children>
+      <Label fx:id="prompt" layoutX="401.0" layoutY="67.0" prefHeight="70.0" prefWidth="399.0" text="カタカナ" textFill="#a4a4a4" AnchorPane.leftAnchor="401.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="67.0">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="pastPrompt" alignment="CENTER_RIGHT" layoutX="1.0" layoutY="67.0" prefHeight="70.0" prefWidth="399.0" text="Other" textFill="#515050" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="67.0">
+         <font>
+            <Font size="48.0" />
+         </font></Label>
+      <TextField fx:id="textIn" alignment="CENTER" layoutX="292.0" layoutY="206.0" prefHeight="39.0" prefWidth="219.0" promptText="Input" style="-fx-background-color: #000; -fx-text-fill: #a4a4a4;" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="206.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHiraganaAction" style="-fx-background-color: #000;" text="Hiragana" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="14.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="14.0" layoutY="42.0" mnemonicParsing="false" onAction="#onKatakanaAction" style="-fx-background-color: #000;" text="Katakana" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
