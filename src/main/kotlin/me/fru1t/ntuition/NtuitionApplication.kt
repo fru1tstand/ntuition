@@ -22,15 +22,27 @@ class NtuitionApplication : Application() {
 
   inner class WordSetSwapper {
     fun hiragana() {
-      reCreateStatsStage()
-      mainController.setWords(Hiragana.words.entries)
-      statsController.setWords(Hiragana.words.keys)
+      initWith(Hiragana.words)
     }
 
     fun katakana() {
+      initWith(Katakana.words)
+    }
+
+    fun inverseHiragana() {
+      val inverse = Hiragana.words.entries.associateBy({ it.value }) { it.key }
+      initWith(inverse)
+    }
+
+    fun inverseKatakana() {
+      val inverse = Katakana.words.entries.associateBy({ it.value }) { it.key }
+      initWith(inverse)
+    }
+
+    private fun initWith(words: Map<String, String>) {
       reCreateStatsStage()
-      mainController.setWords(Katakana.words.entries)
-      statsController.setWords(Katakana.words.keys)
+      mainController.setWords(words.entries)
+      statsController.setWords(words.keys)
     }
   }
   private val wordSetSwapper = WordSetSwapper()

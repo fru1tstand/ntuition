@@ -23,12 +23,12 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHiraganaAction" style="-fx-background-color: #000;" text="Hiragana" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="14.0">
+      <Button layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHiraganaAction" onMouseClicked="#onHiraganaClicked" style="-fx-background-color: #000;" text="Hiragana" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="14.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="14.0" layoutY="42.0" mnemonicParsing="false" onAction="#onKatakanaAction" style="-fx-background-color: #000;" text="Katakana" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0">
+      <Button layoutX="14.0" layoutY="42.0" mnemonicParsing="false" onAction="#onKatakanaAction" onMouseClicked="#onKatakanaClicked" style="-fx-background-color: #000;" text="Katakana" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

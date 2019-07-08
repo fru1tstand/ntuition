@@ -4,6 +4,8 @@ import javafx.application.Platform
 import javafx.fxml.FXML
 import javafx.scene.control.Label
 import javafx.scene.control.TextField
+import javafx.scene.input.MouseButton
+import javafx.scene.input.MouseEvent
 import me.fru1t.me.fru1t.ntuition.collect.DistributionSet
 import me.fru1t.ntuition.NtuitionApplication
 
@@ -18,6 +20,7 @@ class MainController {
   private val pastQueue = Array(5) { "" }
   private var lastSuccessTime: Long = 0
   private lateinit var wordSetSwapper: NtuitionApplication.WordSetSwapper
+  private var isInverseMode = false
 
   fun onShow() {
     redraw()
@@ -46,7 +49,7 @@ class MainController {
       Platform.runLater { textIn.text = "" }
       return
     }
-    if (textIn.text == currentQueue[0].value) {
+    if (textIn.text == currentQueue[0].value || (isInverseMode && textIn.text == " ")) {
       notifySuccessListeners(currentQueue[0].key)
       nextWord()
       Platform.runLater { textIn.text = "" }
@@ -57,8 +60,8 @@ class MainController {
     val successTime = System.currentTimeMillis()
     val delta = successTime - lastSuccessTime
     lastSuccessTime = successTime
-    if (delta > 20000) {
-      println("More than 5 seconds between text, throwing away this input.")
+    if (delta > 600000) {
+      println("More than 1 hour between text, throwing away this input.")
       return
     }
     onSuccessListener?.invoke(key, delta)
@@ -71,7 +74,7 @@ class MainController {
       currentQueue[i] = currentQueue[i + 1]
     }
     currentQueue[currentQueue.size - 1] = promptDistribution.getNext()
-    pastQueue[pastQueue.size - 1] = finishedWord.key
+    pastQueue[pastQueue.size - 1] = if (isInverseMode) finishedWord.value else finishedWord.key
     redraw()
   }
 
@@ -83,10 +86,28 @@ class MainController {
   @FXML
   private fun onHiraganaAction() {
     wordSetSwapper.hiragana()
+    isInverseMode = false
   }
 
   @FXML
   private fun onKatakanaAction() {
     wordSetSwapper.katakana()
+    isInverseMode = false
+  }
+
+  @FXML
+  private fun onHiraganaClicked(event: MouseEvent) {
+    if (event.button == MouseButton.SECONDARY) {
+      wordSetSwapper.inverseHiragana()
+      isInverseMode = true
+    }
+  }
+
+  @FXML
+  private fun onKatakanaClicked(event: MouseEvent) {
+    if (event.button == MouseButton.SECONDARY) {
+      wordSetSwapper.inverseKatakana()
+      isInverseMode = true
+    }
   }
 }
