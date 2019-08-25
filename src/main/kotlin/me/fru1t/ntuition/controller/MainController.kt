@@ -10,6 +10,12 @@ import me.fru1t.me.fru1t.ntuition.collect.DistributionSet
 import me.fru1t.ntuition.NtuitionApplication
 
 class MainController {
+  private companion object {
+    fun isSpace(text: String): Boolean {
+      return text == " " || text == "　"
+    }
+  }
+
   @FXML private lateinit var textIn: TextField
   @FXML private lateinit var prompt: Label
   @FXML private lateinit var pastPrompt: Label
@@ -49,7 +55,7 @@ class MainController {
       Platform.runLater { textIn.text = "" }
       return
     }
-    if (textIn.text == currentQueue[0].value || (isInverseMode && textIn.text == " ")) {
+    if (textIn.text == currentQueue[0].value || (isInverseMode && isSpace(textIn.text))) {
       notifySuccessListeners(currentQueue[0].key)
       nextWord()
       Platform.runLater { textIn.text = "" }

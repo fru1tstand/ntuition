@@ -18,7 +18,7 @@ class StatsController {
       times.add(time)
       val total = times.sum()
       graphDatum.yValue = total / times.size
-      tooltip.text = "$key - ${graphDatum.yValue}"
+      tooltip.text = "$key - ${graphDatum.yValue}ms average of ${times.size} sample(s)"
     }
   }
 
