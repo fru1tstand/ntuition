@@ -46,7 +46,7 @@ object Katakana {
       Pair("レ", "re"),
       Pair("ロ", "ro"),
       Pair("ワ", "wa"),
-      Pair("ヲ", "o"),
+      Pair("ヲ", "wo"),
       Pair("ン", "n"),
       Pair("ガ", "ga"),
       Pair("ギ", "gi"),

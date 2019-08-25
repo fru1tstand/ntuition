@@ -52,7 +52,7 @@ object Hiragana {
       Pair("ぐ", "gu"),
       Pair("げ", "ge"),
       Pair("ご", "go"),
-      Pair("ざ", "ji"),
+      Pair("ざ", "za"),
       Pair("じ", "ji"),
       Pair("ず", "zu"),
       Pair("ぜ", "ze"),
