@@ -14,6 +14,10 @@ class MainController {
     fun isSpace(text: String): Boolean {
       return text == " " || text == "　"
     }
+
+    fun isPeriod(text: String): Boolean {
+      return text == "." || text == "。"
+    }
   }
 
   @FXML private lateinit var textIn: TextField
@@ -50,7 +54,7 @@ class MainController {
 
   private fun onTextChange() {
     println("key in: " + textIn.text)
-    if (textIn.text == "!") {
+    if (isPeriod(textIn.text)) {
       lastSuccessTime = 0
       Platform.runLater { textIn.text = "" }
       return
